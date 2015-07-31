@@ -1,0 +1,29 @@
+{
+  "name": "paypalm",
+  "description": "paypalm api",
+  "author": {
+    "name": "navyxie"
+  },
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/navyxie/paypalm.git"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "underscore": "^1.7.0",
+    "xml2json": "^0.5.1",
+    "xmldom": "0.1.13"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*",
+    "express": "3.0.3",
+    "ejs": "*"
+  },
+  "bugs": {
+    "url": "https://github.com/navyxie/paypalm/issues"
+  },
+  "homepage": "https://github.com/navyxie/paypalm",
+  "scripts": {}
+}
