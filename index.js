@@ -1,1 +1,1 @@
-module.exports = require('./lib/ppwallet');
+module.exports = require('./lib/paypalm');
