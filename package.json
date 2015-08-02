@@ -11,16 +11,7 @@
   },
   "main": "index.js",
   "dependencies": {
-    "underscore": "^1.7.0",
-    "xml2json": "^0.5.1",
-    "xmldom": "0.1.13",
     "request": "^2.55.0"
-  },
-  "devDependencies": {
-    "mocha": "*",
-    "should": "*",
-    "express": "3.0.3",
-    "ejs": "*"
   },
   "bugs": {
     "url": "https://github.com/navyxie/paypalm/issues"
