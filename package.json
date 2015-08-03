@@ -4,7 +4,15 @@
   "author": {
     "name": "navyxie"
   },
-  "version": "0.1.0",
+  "keywords":[
+    "pay",
+    "api",
+    "支付",
+    "pp钱包",
+    "SDK",
+    "paypalm"
+  ],
+  "version": "0.1.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/navyxie/paypalm.git"
