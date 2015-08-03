@@ -4,6 +4,8 @@ pp钱包支付分两步：
 + 订单入库->获取pp钱包支付平台的订单号
 + 订单支付请求->通过第一步获取的订单号，加上商户支付信息组装成一条支付url(地址)
 
+**截止作者写SDK时，pp钱包支付的Native SDK只有Android**
+
 ## 安装
 
 npm install paypalm
@@ -12,7 +14,13 @@ npm install paypalm
 
 [`getPayUrl`](#getPayUrl)
 
+[`paySuccess`](#paySuccess)
+
+[`verify`](#verify)
+
 <a name="getPayUrl" />
+
+获取pp钱包支付url,异步方法
 
 ```js
 var paypalm = require('paypalm');
@@ -43,4 +51,105 @@ paypalmObj.getPayUrl(data,
 		}
 	}
 )
+```
+
+<a name="paySuccess" />
+
+验证支付是否成功(已对数据进行验签),异步方法
+
+```js
+//wap异步回调数据
+var wapNotifyData = {
+	merId: '',
+    merOrderNo: 'navy_test-1438580789182',
+    merUserId: '',
+    orderNo: '',
+    orderStatus: '1',
+    payAmt: '1',
+    resultInfo: 'success',
+    tranResult: '000000',
+    transTime: '20150803134548',
+    remark: 'undefined',
+    sign: ''
+}
+paypalmObj.paySuccess(wapNotifyData,function(err,data){
+	if(!err && data.code === 0){
+		//已完成支付可执行订单更新或者发货了
+	}
+});
+
+//Native SDK 异步回调数据(截止作者写SDK时，pp钱包支付的Native SDK只有Android)
+var nativeNotifyData = {
+	merId: '2014123015',
+    version: 'v1.0',
+    encode: 'UTF-8',
+    encType: '1',
+    signType: '1',
+    zipType: '0',
+    transData:''//transData为需要进行解密以及验签的加密数据
+}
+paypalmObj.paySuccess(nativeNotifyData,function(err,data){
+	if(!err && data.code === 0){
+		//已完成支付可执行订单更新或者发货了
+		//对于Native SDK的支付，可以从data获取回调后的解密数据
+		//data解析后的数据结构:
+		<!-- {
+			merId: '',
+			merOrderNo: '55bf24e573b942b35bbaaa1a',
+			orderNo: '',
+			payAmt: '1',
+			remark: 'SDK2.0',
+			userId: '',
+			transTime: '20150803162548',
+			bankId: '',
+			bankName: '建设银行',
+			orderStatus: '1',
+			errorCode: '000000',
+			errorMsg: 'success',
+			merUserId: '1438590186170',
+			bindId: ''
+		} -->
+	}
+});
+```
+
+<a name="verify" />
+
+认证信息是否正确(未被篡改),返回boolean值或者字符串,同步方法
+
+**注：wap支付回调时验签返回boolean,Native回调验签成功时返回xml字符串，失败返回boolean: false**
+
+```js
+//wap异步回调数据
+var wapNotifyData = {
+	merId: '',
+    merOrderNo: 'navy_test-1438580789182',
+    merUserId: '',
+    orderNo: '',
+    orderStatus: '1',
+    payAmt: '1',
+    resultInfo: 'success',
+    tranResult: '000000',
+    transTime: '20150803134548',
+    remark: 'undefined',
+    sign: ''
+}
+if(paypalmObj.verify(wapNotifyData)){
+	//验签通过，数据未被篡改
+}
+
+//Native SDK 异步回调数据(截止作者写SDK时，pp钱包支付的Native SDK只有Android)
+var nativeNotifyData = {
+	merId: '2014123015',
+    version: 'v1.0',
+    encode: 'UTF-8',
+    encType: '1',
+    signType: '1',
+    zipType: '0',
+    transData:''//transData为需要进行解密以及验签的加密数据
+}
+if(paypalmObj.verify(nativeNotifyData)){
+	//验签通过，数据未被篡改
+}
+
 ```

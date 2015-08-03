@@ -4,14 +4,15 @@
   "author": {
     "name": "navyxie"
   },
-  "version": "0.0.2",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/navyxie/paypalm.git"
   },
   "main": "index.js",
   "dependencies": {
-    "request": "^2.55.0"
+    "request": "^2.55.0",
+    "xml2js": "^0.4.9"
   },
   "bugs": {
     "url": "https://github.com/navyxie/paypalm/issues"
