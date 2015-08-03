@@ -16,6 +16,8 @@ npm install paypalm
 
 [`paySuccess`](#paySuccess)
 
+[`getStopNotifyString`](#getStopNotifyString)[]
+
 [`verify`](#verify)
 
 <a name="getPayUrl" />
@@ -111,6 +113,17 @@ paypalmObj.paySuccess(nativeNotifyData,function(err,data){
 		} -->
 	}
 });
+```
+
+<a name="getStopNotifyString" />
+
+获取终止pp钱包异步回调的相应字符串
+
+**注：当向pp钱包相应此字符串时，代表商户已经成功处理回调，pp钱包将终止异步回调。**
+
+```js
+//wap异步回调数据
+res.send(paypalmObj.getStopNotifyString());
 ```
 
 <a name="verify" />
