@@ -4,6 +4,8 @@ pp钱包支付分两步：
 + 订单入库->获取pp钱包支付平台的订单号
 + 订单支付请求->通过第一步获取的订单号，加上商户支付信息组装成一条支付url(地址)
 
+**截止作者写SDK时，pp钱包支付的Native SDK只有Android**
+
 ## 安装
 
 npm install paypalm
@@ -114,7 +116,8 @@ paypalmObj.paySuccess(nativeNotifyData,function(err,data){
 <a name="verify" />
 
 认证信息是否正确(未被篡改),返回boolean值或者字符串,同步方法
-** 注：wap支付回调时验签返回boolean,Native回调验签成功时返回xml字符串，失败返回boolean: false **
+
+**注：wap支付回调时验签返回boolean,Native回调验签成功时返回xml字符串，失败返回boolean: false**
 
 ```js
 //wap异步回调数据
