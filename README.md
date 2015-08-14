@@ -26,7 +26,7 @@ npm install paypalm
 
 [`paySuccess`](#paySuccess)
 
-[`getStopNotifyData`](#getStopNotifyData)[]
+[`getStopNotifyData`](#getStopNotifyData)
 
 [`verify`](#verify)
 
